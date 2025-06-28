@@ -1,34 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script src="https://unpkg.com/vue@3"></script>
-</head>
+    <style>
+        html, body {
+            height: 100%;
+        }
+        body {
+            display: grid;
+            place-items: center;
+        }
+        .text-red {
+            color: red;
+        }
+        .text-green {
+            color: green;
+        }        
+    </style>
+  </head>
 
-<body>
+  <body>
     <div id="app">
-        <p><input type="text" v-model="greeting"></p>
-        
-        <p>{{ greeting }} ({{ greeting.length }})</p>
+      <button :class="active ? 'text-red' : 'text-green'" @click="toggle">Click me</button>
     </div>
 
     <script>
-        Vue.createApp({
-            data() {
-                return {
-                    greeting: "Hello World! What is up?",
-                };
-            },
-            mounted() {
-                window.setTimeout(() => {
-                    this.greeting = 'Time Up';
-                }, 3000);
+      Vue.createApp({
+        data() {
+            return {
+                active: false
+            };
+        },
+        methods: {
+            toggle(){
+                this.active = ! this.active;
             }
-        }).mount("#app");
+        }
+      }).mount("#app");
     </script>
-</body>
-
+  </body>
 </html>
