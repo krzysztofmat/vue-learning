@@ -7,7 +7,7 @@ export default {
             :class="{
             'border-blue-500 text-blue-500': tag === currentTag  
             }"
-            @click="$emit('change', tag)"
+            @click="$emit('update:currentTag', tag)"
             >{{ tag }}
         </button>
     </div>        
@@ -15,7 +15,7 @@ export default {
 
   props: {
     initialTags: Array,
-    currentTag: String,
+    currentTag: String
   },
 
   computed: {
